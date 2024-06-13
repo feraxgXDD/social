@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func Write(file string) []string {
+func Read(file string) []string {
 
 	f, err := os.Open(file)
 	if err != nil {
@@ -24,4 +24,15 @@ func Write(file string) []string {
 
 	return lines
 
+}
+
+func Write(file string, text string) {
+	files, err := os.Open(file)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer files.Close()
+
+	files.WriteString(text)
 }
