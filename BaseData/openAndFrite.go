@@ -1,4 +1,4 @@
-package writerFunc
+package basedata
 
 import (
 	"bufio"

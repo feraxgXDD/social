@@ -3,6 +3,7 @@ package structsSTR
 import (
 	"math/rand"
 	"time"
+
 )
 
 type User struct {
