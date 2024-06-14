@@ -2,14 +2,19 @@ package intrepritator
 
 import (
 	basedata "just/BaseData"
+	"strings"
 )
 
 func WriteIntrFile(writeFile string, manual map[string]map[string]string) {
-	for k, _ := range manual {
-		basedata.Write(writeFile, k+" -> {\n")
-		for k2, v := range manual[k] {
-			basedata.Write(writeFile, "\t"+k2+" = "+v+"\n")
+	var content strings.Builder
 
+	for key, subMap := range manual {
+		content.WriteString(key + " -> {\n")
+		for subKey, value := range subMap {
+			content.WriteString("\t" + subKey + " = " + value + "\n")
 		}
+		content.WriteString("}\n")
 	}
+
+	basedata.Write(writeFile, content.String())
 }

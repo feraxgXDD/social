@@ -1,15 +1,15 @@
 package main
 
 import (
-	"fmt"
-
-	"just/structsSTR"
+	"just/intrepritator"
 )
 
-var userMap = make(map[string]*structsSTR.User)
-
 func main() {
-	structsSTR.NewUser(userMap, "John", "123456")
-
-	fmt.Println(userMap["John"])
+	manual := map[string]map[string]string{
+		"key1": {
+			"value1": "data1",
+			"value2": "data2",
+		},
+	}
+	intrepritator.WriteIntrFile("base.txt", manual)
 }
