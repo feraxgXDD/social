@@ -1,8 +1,9 @@
 package intrepritator
 
 import (
-	basedata "just/BaseData"
 	"strings"
+
+	basedata "just/BaseData"
 )
 
 func WriteIntrFile(writeFile string, manual map[string]map[string]string) {

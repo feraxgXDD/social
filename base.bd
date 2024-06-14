@@ -1,0 +1,10 @@
+key1 -> {
+  value1 = data1
+	value2 = data2
+  value3 = data3
+  value4 = "f"
+}
+key1 -> {
+	value1 = data1
+	value2 = data2
+}

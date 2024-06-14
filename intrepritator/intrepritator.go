@@ -7,30 +7,38 @@ import (
 
 )
 
-func initIntr(fileRead string) map[string]map[string]string {
+func InitIntr(fileRead string) map[string]map[string]string {
 	fmt.Println("intrepritator package initialized")
 
 	var returnedMap = map[string]map[string]string{}
 
 	file := basedata.Read(fileRead)
 
-	for i := 0; i < len(file); i++ {
-		fileLexing := basedata.Lexer2(file[i])
+	var currentKey string
+	var valueMap = map[string]string{}
 
-		if fileLexing[i] == "->" {
-			if fileLexing[i+1] == "{" {
-				for j := len(file) - i; j > i; j-- {
-					if fileLexing[j] == "}" {
-						fmt.Println(file[i+1 : j])
+	for _, line := range file {
+		tokens := basedata.Lexer2(line)
+		fmt.Println(tokens)
+
+		if len(tokens) > 0 {
+			if tokens[0] == "->" && tokens[1] == "{" {
+				currentKey = tokens[2] // Предполагаем, что ключ находится после "->" и перед "{"
+			} else if currentKey != "" {
+				for j := 0; j < len(tokens); j++ {
+					if tokens[j] == "}" {
+						returnedMap[currentKey] = valueMap
+						valueMap = map[string]string{} // Очищаем valueMap для следующего ключа
+						currentKey = ""
 						break
 					}
-					if fileLexing[j+1] == "=" {
-						returnedMap[fileLexing[i-1]] = map[string]string{fileLexing[j+2]: fileLexing[j+3]}
-						break
+					if tokens[j] == "=" {
+						if j+2 < len(tokens) {
+							valueMap[tokens[j+1]] = tokens[j+2]
+						}
 					}
 				}
 			}
-
 		}
 	}
 	return returnedMap

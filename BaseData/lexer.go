@@ -2,8 +2,7 @@ package basedata
 
 var SeparatorLogic = []string{
 	" ",
-	".",
-	"@",
+	"	",
 }
 
 func Lexer(input string) [][]string {

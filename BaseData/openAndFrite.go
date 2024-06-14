@@ -27,14 +27,12 @@ func Read(file string) []string {
 }
 
 func Write(file string, text string) {
-	f, err := os.OpenFile(file, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+	f, err := os.OpenFile(file, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0777)
 	if err != nil {
 		fmt.Println("Error opening file:", err)
 		return
 	}
 	defer f.Close()
-
-	fmt.Println("Writing to file:", text) // Отладочное сообщение
 
 	_, err = f.WriteString(text)
 	if err != nil {
