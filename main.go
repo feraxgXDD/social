@@ -3,12 +3,11 @@ package main
 import (
 	"fmt"
 
-	"just/intrepritator"
-
+	"just/intr"
 )
 
 func main() {
 
-	a := intrepritator.InitIntr("base.bd")
+	a := intr.InitIntr("base.bd")
 	fmt.Println(a)
 }
