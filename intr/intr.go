@@ -22,7 +22,7 @@ func InitIntr(fileRead string) map[string]map[string]string {
 
 		if len(tokens) > 0 {
 			if tokens[0] == "->" && tokens[1] == "{" {
-				currentKey = tokens[2] // Предполагаем, что ключ находится после "->" и перед "{"
+				currentKey = tokens[2]
 			} else if currentKey != "" {
 				for j := 0; j < len(tokens); j++ {
 					if tokens[j] == "}" {
